@@ -14,14 +14,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter student Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -30,7 +29,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar( title: Text(widget.title), ),
+      appBar: AppBar(
+        backgroundColor: Colors.amberAccent.shade700,
+        actions: [
+          IconButton(
+            onPressed: (() {
+              debugPrint('clicked');
+            }),
+            icon: const Icon(Icons.search),
+          )
+        ],
+        elevation: 3.5,
+        centerTitle: true,
+        title: const Text('STUDENT FLUTTER'),
+      ),
       body: Container(
         color: Colors.red,
         padding: const EdgeInsets.all(25),
@@ -40,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),
+      drawer: const Drawer(),
     );
   }
 }
